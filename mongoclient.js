@@ -1,20 +1,28 @@
 var mongodb = require('mongodb')
 var uri = 'mongodb://localhost:27017/example';
 
+
+var doc = {
+  title: 'Jaws',
+  year: 1975,
+  director: 'Steve Speilberg',
+  rating:'PG'
+}
+
 mongodb.MongoClient.connect(uri, function(error, db) {
   if (error) {
     console.log(error);
     process.exit(1);
   }
 
-  db.collection('sample').insert({x:1}, function(error, result) {
+  db.collection('movies').insert(doc, function(error, result) {
     if (error) {
       console.log(error);
       process.exit(1);
     }
   })
 
-  db.collection('sample').find().toArray(function(error, docs) {
+  db.collection('movies').find().toArray(function(error, docs) {
     if (error) {
       console.log(error);
       process.exit(1);
