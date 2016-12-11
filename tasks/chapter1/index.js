@@ -6,6 +6,4 @@ mongodb(function(err, db) {
         console.log(err);
         process.exit(1);
     }
-
-
 })
